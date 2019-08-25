@@ -48,6 +48,7 @@ services:
     container_name: wordpress
     volumes:
       - ${WORDPRESS_DATA_DIR:-./wordpress}:/var/www/html
+      - ${WORDPRESS_UPLOAD_DIR:-./uploads.ini}:/usr/local/etc/php/conf.d/uploads.ini
     environment:
       - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME:-wordpress}
       - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX:-wp_}
@@ -114,16 +115,16 @@ services:
 WORDPRESS_VERSION=php7.3-fpm
 WORDPRESS_DB_NAME=wordpress
 WORDPRESS_TABLE_PREFIX=wp_
-WORDPRESS_DB_HOST=mysql					#DB HOST, docker compose에서 mysql host link
-WORDPRESS_DB_USER=esthercoy				#DB 사용자
-WORDPRESS_DB_PASSWORD=1q2w3e~!			#DB 사용자 암호
+WORDPRESS_DB_HOST=mysql					
+WORDPRESS_DB_USER=esthercoy				
+WORDPRESS_DB_PASSWORD=1q2w3e~!			
 
 # mariadb - mariadb:latest
 MARIADB_VERSION=latest
-MYSQL_ROOT_PASSWORD=1q2w3e~!			#root 비밀번호
-MYSQL_USER=esthercoy					#새로운 DB사용자
-MYSQL_PASSWORD=1q2w3e~!					#새로운 DB사용자 암호
-MYSQL_DATABASE=wordpress				#사용할 DB
+MYSQL_ROOT_PASSWORD=1q2w3e~!			
+MYSQL_USER=esthercoy				
+MYSQL_PASSWORD=1q2w3e~!					
+MYSQL_DATABASE=wordpress				
 
 # nginx - nginx:latest
 NGINX_VERSION=latest
@@ -135,6 +136,7 @@ PHPMYADMIN_VERSION=latest
 NGINX_CONF_DIR=./nginx
 NGINX_LOG_DIR=./logs/nginx
 WORDPRESS_DATA_DIR=./wordpress
+WORDPRESS_UPLOAD_DIR=./upload.ini
 MYSQL_DATA_DIR=./mysql
 PHPMYADMIN_CONF_DIR=./phpmyadmin
 SSL_CERTS_DIR=./certs
@@ -142,7 +144,15 @@ SSL_CERTS_DATA_DIR=./certs-data
 
 ```
 
+##### upload.ini
+```
+file_uploads = On
+memory_limit = 500M
+upload_max_filesize = 500M
+post_max_size = 500M
+max_execution_time = 600
 
+```
 
 ##### HTTP default.conf
 
