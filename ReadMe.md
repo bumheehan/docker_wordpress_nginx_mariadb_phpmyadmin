@@ -155,7 +155,15 @@ post_max_size = 500M
 max_execution_time = 600
 
 ```
+##### nginx 업로드부분 변경
+```
 
+server {
+    listen 80;
+    server_name 127.0.0.1;
+    client_max_body_size 500M;
+    
+```
 ##### HTTP default.conf
 
 ```
