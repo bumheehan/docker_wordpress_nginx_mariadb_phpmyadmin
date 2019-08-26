@@ -49,6 +49,7 @@ services:
     volumes:
       - ${WORDPRESS_DATA_DIR:-./wordpress}:/var/www/html
       - ${WORDPRESS_UPLOAD_DIR:-./uploads.ini}:/usr/local/etc/php/conf.d/uploads.ini
+      - ${WORDPRESS_PHPCONF_DIR:-./php.conf.d}:/usr/local/etc/php-fpm.d
     environment:
       - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME:-wordpress}
       - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX:-wp_}
@@ -137,6 +138,7 @@ NGINX_CONF_DIR=./nginx
 NGINX_LOG_DIR=./logs/nginx
 WORDPRESS_DATA_DIR=./wordpress
 WORDPRESS_UPLOAD_DIR=./upload.ini
+WORDPRESS_PHPCONF_DIR=-./php.conf.d
 MYSQL_DATA_DIR=./mysql
 PHPMYADMIN_CONF_DIR=./phpmyadmin
 SSL_CERTS_DIR=./certs
