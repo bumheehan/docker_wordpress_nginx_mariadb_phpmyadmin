@@ -102,6 +102,12 @@ services:
     depends_on:
       - mysql
     restart: always
+    
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450
 ```
 
 - docker-compose 에서 컨테이너 이름 그대로 쓰면 그 컨테이너의 host 값이 들어감, 포트를 열지않으면 컨테이너들은 docker 0를 통해서만 통신이 가능한데 그때 내부 ip를 사용할때 위의 방법으로 사용함 
