@@ -319,4 +319,14 @@ Removing mysql     ... done
 
 
 ## phpmyadmin
-phpmyadmin 에서 서버까지 쓰라고하면 mysql 쓰
+phpmyadmin 에서 서버까지 쓰라고하면 mysql 쓰면됨
+
+
+wordpress volume 계정은 www-data 넘버는 33
+
+```
+sudo chown -R 33:33 wordpress
+```
+
+
+
