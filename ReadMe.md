@@ -316,3 +316,7 @@ Removing wordpress ... done
 Removing mysql     ... done
 ```
 
+
+
+## phpmyadmin
+phpmyadmin 에서 서버까지 쓰라고하면 mysql 쓰
